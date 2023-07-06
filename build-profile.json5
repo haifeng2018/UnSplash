@@ -1,0 +1,40 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:\\Users\\BS-WX\\.ohos\\config\\openharmony\\auto_ohos_default_UnSplash_org.cherry.unsplash.cer",
+          "storePassword": "0000001A06359D01D2C9AB14904D78674F7D98DEDC4F4110C0CC891F20F03723D31430A5677C34867064",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A9C8FB727E4250AB5E5D45485D906714347F532618EF197319F9A553CD21BB8229A332734D1E4",
+          "profile": "C:\\Users\\BS-WX\\.ohos\\config\\openharmony\\auto_ohos_default_UnSplash_org.cherry.unsplash.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\BS-WX\\.ohos\\config\\openharmony\\auto_ohos_default_UnSplash_org.cherry.unsplash.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

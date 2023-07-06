@@ -1,0 +1,264 @@
+{
+  "float": [
+    {
+      "name": "status_bar_height",
+      "value": "0vp"
+    },
+    {
+      "name": "vp_1",
+      "value": "1vp"
+    },
+    {
+      "name": "vp_2",
+      "value": "2vp"
+    },
+    {
+      "name": "vp_4",
+      "value": "4vp"
+    },
+    {
+      "name": "vp_5",
+      "value": "5vp"
+    },
+    {
+      "name": "vp_6",
+      "value": "6vp"
+    },
+    {
+      "name": "vp_8",
+      "value": "8vp"
+    },
+    {
+      "name": "vp_10",
+      "value": "10vp"
+    },
+    {
+      "name": "vp_12",
+      "value": "12vp"
+    },
+    {
+      "name": "vp_13",
+      "value": "13vp"
+    },
+    {
+      "name": "vp_14",
+      "value": "14vp"
+    },
+    {
+      "name": "vp_15",
+      "value": "15vp"
+    },
+    {
+      "name": "vp_18",
+      "value": "18vp"
+    },
+    {
+      "name": "vp_20",
+      "value": "20vp"
+    },
+    {
+      "name": "vp_24",
+      "value": "24vp"
+    },
+    {
+      "name": "vp_26",
+      "value": "26vp"
+    },
+    {
+      "name": "vp_28",
+      "value": "28vp"
+    },
+    {
+      "name": "vp_30",
+      "value": "30vp"
+    },
+    {
+      "name": "vp_36",
+      "value": "36vp"
+    },
+    {
+      "name": "vp_40",
+      "value": "40vp"
+    },
+    {
+      "name": "vp_50",
+      "value": "50vp"
+    },
+    {
+      "name": "vp_56",
+      "value": "56vp"
+    },
+    {
+      "name": "vp_60",
+      "value": "60vp"
+    },
+    {
+      "name": "vp_70",
+      "value": "70vp"
+    },
+    {
+      "name": "vp_80",
+      "value": "80vp"
+    },
+    {
+      "name": "vp_88",
+      "value": "88vp"
+    },
+    {
+      "name": "vp_90",
+      "value": "90vp"
+    },
+    {
+      "name": "vp_100",
+      "value": "100vp"
+    },
+    {
+      "name": "vp_110",
+      "value": "110vp"
+    },
+    {
+      "name": "vp_118",
+      "value": "118vp"
+    },
+    {
+      "name": "vp_120",
+      "value": "120vp"
+    },
+    {
+      "name": "vp_128",
+      "value": "128vp"
+    },
+    {
+      "name": "vp_148",
+      "value": "148vp"
+    },
+    {
+      "name": "vp_160",
+      "value": "160vp"
+    },
+    {
+      "name": "vp_168",
+      "value": "168vp"
+    },
+    {
+      "name": "vp_180",
+      "value": "180vp"
+    },
+    {
+      "name": "vp_188",
+      "value": "188vp"
+    },
+    {
+      "name": "vp_198",
+      "value": "198vp"
+    },
+    {
+      "name": "vp_200",
+      "value": "200vp"
+    },
+    {
+      "name": "vp_220",
+      "value": "220vp"
+    },
+    {
+      "name": "vp_226",
+      "value": "226vp"
+    },
+    {
+      "name": "vp_256",
+      "value": "256vp"
+    },
+    {
+      "name": "vp_260",
+      "value": "260vp"
+    },
+    {
+      "name": "vp_298",
+      "value": "298vp"
+    },
+    {
+      "name": "vp_320",
+      "value": "320vp"
+    },
+    {
+      "name": "vp_328",
+      "value": "328vp"
+    },
+    {
+      "name": "vp_400",
+      "value": "400vp"
+    },
+    {
+      "name": "vp_520",
+      "value": "520vp"
+    },
+    {
+      "name": "vp_640",
+      "value": "640vp"
+    },
+    {
+      "name": "fp_12",
+      "value": "12fp"
+    },
+    {
+      "name": "fp_14",
+      "value": "14fp"
+    },
+    {
+      "name": "fp_16",
+      "value": "16fp"
+    },
+    {
+      "name": "fp_18",
+      "value": "18fp"
+    },
+    {
+      "name": "fp_20",
+      "value": "20fp"
+    },
+    {
+      "name": "fp_22",
+      "value": "22fp"
+    },
+    {
+      "name": "fp_24",
+      "value": "24fp"
+    },
+    {
+      "name": "fp_28",
+      "value": "28fp"
+    },
+    {
+      "name": "fp_36",
+      "value": "36fp"
+    },
+    {
+      "name": "mini_title_font_size",
+      "value": "16fp"
+    },
+    {
+      "name": "mini_title_margin",
+      "value": "12vp"
+    },
+    {
+      "name": "image_border_radius",
+      "value": "10vp"
+    },
+    {
+      "name": "normal_title_font_size",
+      "value": "12fp"
+    },
+    {
+      "name": "normal_content_font_size",
+      "value": "10fp"
+    },
+    {
+      "name": "row_padding",
+      "value": "12vp"
+    },
+    {
+      "name": "font_size",
+      "value": "16fp"
+    }
+  ]
+}
