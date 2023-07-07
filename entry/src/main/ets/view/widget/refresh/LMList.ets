@@ -40,7 +40,7 @@ export default struct LMList {
 
   private onRefresh: () => void;
   private onLoadMore: () => void;
-  @BuilderParam itemLayout: (data) => void;
+  @BuilderParam itemLayout: (data,index) => void;
 
   build() {
     Column() {
@@ -82,9 +82,9 @@ export default struct LMList {
       })
 
       List() {
-        ForEach(this.datas, item => {
+        ForEach(this.datas, (item,index) => {
           ListItem() {
-            this.itemLayout(item)
+            this.itemLayout(item,index)
           }
         })
 

@@ -2,14 +2,16 @@
  * -----------------------------------------------------------------
  * Copyright (C) 2018-2028, by Victor, All rights reserved.
  * -----------------------------------------------------------------
- * File: Constants
+ * File: Link
  * Author: Victor
- * Date: 2023/06/16 12:14
+ * Date: 2023/07/07 17:14
  * Description: 
  * -----------------------------------------------------------------
  */
-
-export default class Constants {
-  static readonly MATCH_PARENT: string = '100%';
-  static readonly SWIPER_DATA_TAG: string = 'SWIPER_DATA_TAG';
-}
+ export class Link{
+   self: string;
+   html: string;
+   download: string;
+   download_location: string;
+ }
+ 

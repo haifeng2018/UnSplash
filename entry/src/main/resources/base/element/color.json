@@ -27,6 +27,22 @@
     {
       "name": "color_4DEEEEEE",
       "value": "#4DEEEEEE"
+    },
+    {
+      "name": "transparent",
+      "value": "#00000000"
+    },
+    {
+      "name": "color_99000000",
+      "value": "#99000000"
+    },
+    {
+      "name": "color_666666",
+      "value": "#666666"
+    },
+    {
+      "name": "color_1400001E",
+      "value": "#1400001E"
     }
   ]
 }

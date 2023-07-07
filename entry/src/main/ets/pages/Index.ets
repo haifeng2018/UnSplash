@@ -1,6 +1,7 @@
 import { NavList, TabId } from '../model/HomeTabModel'
 import Constants from '../util/Constants'
 import { HomeTabContent } from '../view/widget/HomeTabContent'
+import { SearchTabContent } from '../view/widget/SearchTabContent'
 @Entry
 @Component
 struct Index {
@@ -15,7 +16,7 @@ struct Index {
         }.tabBar(this.TabBuilder(TabId.HOME))
 
         TabContent() {
-          Text('search')
+          SearchTabContent()
         }.tabBar(this.TabBuilder(TabId.SEARCH))
 
         TabContent() {

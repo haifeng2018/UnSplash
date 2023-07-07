@@ -2,14 +2,15 @@
  * -----------------------------------------------------------------
  * Copyright (C) 2018-2028, by Victor, All rights reserved.
  * -----------------------------------------------------------------
- * File: Constants
+ * File: ProfileImageInfo
  * Author: Victor
- * Date: 2023/06/16 12:14
+ * Date: 2023/07/07 17:20
  * Description: 
  * -----------------------------------------------------------------
  */
-
-export default class Constants {
-  static readonly MATCH_PARENT: string = '100%';
-  static readonly SWIPER_DATA_TAG: string = 'SWIPER_DATA_TAG';
-}
+ export class ProfileImageInfo {
+   small: string;
+   medium: string;
+   large: string;
+ }
+ 

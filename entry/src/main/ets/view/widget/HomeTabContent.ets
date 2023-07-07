@@ -13,12 +13,17 @@ import { HomeApi } from '../../api/HomeApi';
 import { TopicInfo } from '../../bean/TopicInfo';
 import Constants from '../../util/Constants'
 import HttpRequest from '../../util/HttpRequest';
+import { HomeTabSwiperContent } from './HomeTabSwiperContent';
 
 @Preview
 @Component
 export struct HomeTabContent {
-  @State currentIndex: number = 0
   @State datas: Array<any> = [];
+  private controller: TabsController = new TabsController()
+
+  @State currentIndex: number = 0
+  @State id_or_slug: string = ""
+  @State list: Array<any> = [];
 
   aboutToAppear() {
     this.sendTopicsRequest()
@@ -28,7 +33,6 @@ export struct HomeTabContent {
     HttpRequest.url = HomeApi.TOPICS
     HttpRequest.request({
       onSuccess: (value) => {
-        // this.pageState = PageState.Success;
         this.datas = value
       },
       onFail: (errorCode) => {
@@ -39,99 +43,98 @@ export struct HomeTabContent {
   }
 
   build() {
-    Column() {
+    Stack() {
       Swiper() {
         ForEach(this.datas, data => {
           if (data.status === 'open') {
-            Stack() {
-              this.headerLayout(data)
-              Column(){
-                Text(data.title)
-                  .width(Constants.MATCH_PARENT)
-                  .fontColor($r('app.color.color_333333'))
-                  .fontSize($r('app.float.fp_36'))
-                  .textAlign(TextAlign.Start)
-                  .padding({left:$r('app.float.vp_20'),right:$r('app.float.vp_20')})
-
-                Text(data.description)
-                  .width(Constants.MATCH_PARENT)
-                  .fontColor($r('app.color.color_333333'))
-                  .fontSize($r('app.float.fp_22'))
-                  .maxLines(6)
-                  .textOverflow({overflow: TextOverflow.Ellipsis})
-                  .margin({top: $r('app.float.vp_20')})
-                  .padding({left:$r('app.float.vp_20'),right:$r('app.float.vp_20')})
-
-                List({ space: 20 }) {
-                  ForEach(data.preview_photos, item => {
-                    ListItem() {
-                      Column() {
-                        Image(item.urls.small_s3)
-                          .width(Constants.MATCH_PARENT)
-                          .height($r('app.float.vp_198'))
-
-                        Stack() {
-                          Image(item.urls.small_s3)
-                            .width(Constants.MATCH_PARENT)
-                            .height($r('app.float.vp_198'))
-                            .blur(18)
-                            .rotate({
-                              x: 0,
-                              y: 1,
-                              z: 0,
-                              centerX: '50%',
-                              centerY: '50%',
-                              angle: 180
-                            }) // 组件以矢量(0,1,0)为旋转轴，绕中心点顺时针旋转180度
-                        }
-                        .width(Constants.MATCH_PARENT)
-                        .height($r('app.float.vp_198'))
-                        .rotate({
-                          x: 0,
-                          y: 0,
-                          z: 1,
-                          centerX: '50%',
-                          centerY: '50%',
-                          angle: 180
-                        }) // 组件以矢量(0,0,1)为旋转轴，绕中心点顺时针旋转180度
-                      }
-                      .width($r('app.float.vp_298'))
-                      .height(Constants.MATCH_PARENT)
-                      .padding({left: $r('app.float.vp_10'),right:$r('app.float.vp_10')})
-                    }
-                  })
-                }
-                .height($r('app.float.vp_400'))
-                .margin({top: $r('app.float.vp_20')})
-                .listDirection(Axis.Horizontal)
-                .chainAnimation(true)
-              }
-              .width(Constants.MATCH_PARENT)
-              .offset({y: $r('app.float.vp_118')})
-            }
-            .align(Alignment.BottomStart)
+            HomeTabSwiperContent({
+              topicInfo: data
+            })
           }
         })
       }
       .width(Constants.MATCH_PARENT)
       .height(Constants.MATCH_PARENT)
-      .vertical(true)
+      .vertical(false)
       .indicator(false)
-      .index(0)
-      .autoPlay(true)
+      .index(this.currentIndex)
+      .autoPlay(false)
       .interval(10000)
       .loop(false)
       .duration(1000)
       .itemSpace(0)
       .curve(Curve.Linear)
-    }
-  }
+      .onChange((index: number) => {
+        this.currentIndex = index
+      })
 
-  @Builder headerLayout (info: TopicInfo) {
-    Image(info.cover_photo.urls.small)
+      Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
+        ForEach(this.datas,(data,index) => {
+           if (data.status === 'open') {
+             TabContent() {
+             }.tabBar(this.TabBuilder(index - 1))
+             .padding({top:$r('app.float.vp_50')})
+           }
+        })
+      }
+      .vertical(false)
+      .barWidth(Constants.MATCH_PARENT)
+      .barHeight($r('app.float.vp_56'))
+      .barMode(BarMode.Scrollable)
       .width(Constants.MATCH_PARENT)
-      .height(Constants.MATCH_PARENT)
-      .blur(98)
+      .height($r('app.float.vp_128'))
+      .linearGradient({
+        direction: GradientDirection.Bottom,
+        colors: [[$r('app.color.color_99000000'), 0.05], [$r('app.color.transparent'), 0.95]]
+      })
+      .onChange((index: number) => {
+        this.currentIndex = index
+      })
+
+      this.titleBar()
+
+    }
+    .alignContent(Alignment.Top)
   }
 
+  @Builder titleBar() {
+    Row(){
+      Image($r('app.media.ic_home_logo'))
+        .width($r('app.float.vp_40'))
+        .height($r('app.float.vp_40'))
+        .objectFit(ImageFit.Contain)
+        .margin({left: $r('app.float.vp_20')})
+
+      Text('Unsplash')
+        .height($r('app.float.vp_56'))
+        .layoutWeight(1)
+        .fontSize($r('app.float.fp_24'))
+        .fontColor($r('app.color.white'))
+        .fontWeight(700)
+        .textAlign(TextAlign.Center)
+        .margin({right: $r('app.float.vp_60')})
+    }
+    .width(Constants.MATCH_PARENT)
+    .margin({top: $r('app.float.vp_10')})
+    .padding({top:$r('app.float.status_bar_height')})
+  }
+
+  @Builder TabBuilder(index: number) {
+    Stack() {
+      Text(this.datas[index + 1].title)
+        .height(Constants.MATCH_PARENT)
+        .padding({left:$r('app.float.vp_20'),right:$r('app.float.vp_20')})
+        .fontSize(this.currentIndex === index ? $r('app.float.fp_22') : $r('app.float.fp_20'))
+        .fontWeight(this.currentIndex === index ? 700 : 500)
+        .fontColor(this.currentIndex === index ? $r('app.color.white') : $r('app.color.color_80FFFFFF'))
+
+      Divider()
+        .strokeWidth('5vp')
+        .width($r('app.float.vp_20'))
+        .margin({bottom:$r('app.float.vp_5')})
+        .color($r('app.color.white'))
+        .opacity(this.currentIndex === index ? 1 : 0)
+
+    }.alignContent(Alignment.Bottom)
+  }
 }
