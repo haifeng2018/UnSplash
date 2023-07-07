@@ -30,7 +30,7 @@ import { TopicInfo } from '../../bean/TopicInfo';
 
   @State currentPage: number = 1
 
-  sendFollowRequest () {
+  sendTopicPhotosRequest () {
     HttpRequest.url = this.getRequestUrl()
     HttpRequest.request({
       onSuccess: (value) => {
@@ -49,17 +49,17 @@ import { TopicInfo } from '../../bean/TopicInfo';
   }
 
   aboutToAppear() {
-    this.sendFollowRequest()
+    this.sendTopicPhotosRequest()
   }
 
   refreshData () {
     this.currentPage = 1
-    this.sendFollowRequest()
+    this.sendTopicPhotosRequest()
   }
 
   loadMoreData () {
     this.currentPage++
-    this.sendFollowRequest()
+    this.sendTopicPhotosRequest()
   }
 
   build() {
