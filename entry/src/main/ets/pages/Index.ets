@@ -2,6 +2,7 @@ import { NavList, TabId } from '../model/HomeTabModel'
 import Constants from '../util/Constants'
 import { HomeTabContent } from '../view/widget/HomeTabContent'
 import { SearchTabContent } from '../view/widget/SearchTabContent'
+import { UploadTabContent } from '../view/widget/UploadTabContent'
 @Entry
 @Component
 struct Index {
@@ -20,7 +21,7 @@ struct Index {
         }.tabBar(this.TabBuilder(TabId.SEARCH))
 
         TabContent() {
-          Text('upload')
+          UploadTabContent()
         }.tabBar(this.TabBuilder(TabId.UPLOAD))
 
         TabContent() {

@@ -36,7 +36,6 @@ export struct HomeTabContent {
         this.datas = value
       },
       onFail: (errorCode) => {
-        // this.pageState = PageState.Fail
         promptAction.showToast({ message: 'errorCode = ' + errorCode});
       }
     })

@@ -16,6 +16,6 @@ export class HomeApi {
 
   static readonly TOPIC_PHOTOS = 'topics/bo8jQKTaE0Y/photos?&page=1&per_page=10&client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo'//
 
-  static readonly TAG = 'http://baobab.kaiyanapp.com/api/v7/tag/tabList'//
+  static readonly POPULAR_PHOTOS = `${HomeApi.BASE_URL}photos?order_by=popular&${HomeApi.AUTH}&page=1&per_page=10`
 
 }
