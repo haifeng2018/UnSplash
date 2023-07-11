@@ -8,6 +8,8 @@
  * Description: 
  * -----------------------------------------------------------------
  */
+import List from '@ohos.util.List';
+import { PreviewPhotoInfo } from './PreviewPhotoInfo';
 import { ProfileImageInfo } from './ProfileImageInfo';
 import { UserLinkInfo } from './UserLinkInfo';
  export class UserInfo {
@@ -29,5 +31,6 @@ import { UserLinkInfo } from './UserLinkInfo';
    total_photos: number;
    accepted_tos: boolean;
    for_hire: boolean;
+   photos: List<PreviewPhotoInfo>;
  }
  

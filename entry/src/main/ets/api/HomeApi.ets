@@ -17,5 +17,10 @@ export class HomeApi {
   static readonly TOPIC_PHOTOS = 'topics/bo8jQKTaE0Y/photos?&page=1&per_page=10&client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo'//
 
   static readonly POPULAR_PHOTOS = `${HomeApi.BASE_URL}photos?order_by=popular&${HomeApi.AUTH}&page=1&per_page=10`
+  static readonly USER_INFO = 'https://api.unsplash.com/users/victor423099?client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo'
+  static readonly ME = 'https://api.unsplash.com/me?client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo'
+  static readonly MY_PHOTOS = 'https://api.unsplash.com/users/victor423099/photos?client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo&page=1&per_page=20'
+  static readonly MY_LIKES = 'https://api.unsplash.com/users/victor423099/likes?client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo&page=1&per_page=20'
+  static readonly MY_COLLECTIONS = 'https://api.unsplash.com/users/victor423099/collections?client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo&page=1&per_page=20'
 
 }

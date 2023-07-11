@@ -1,6 +1,7 @@
 import { NavList, TabId } from '../model/HomeTabModel'
 import Constants from '../util/Constants'
 import { HomeTabContent } from '../view/widget/HomeTabContent'
+import { MeTabContent } from '../view/widget/MeTabContent'
 import { SearchTabContent } from '../view/widget/SearchTabContent'
 import { UploadTabContent } from '../view/widget/UploadTabContent'
 @Entry
@@ -25,7 +26,7 @@ struct Index {
         }.tabBar(this.TabBuilder(TabId.UPLOAD))
 
         TabContent() {
-          Text('me')
+          MeTabContent()
         }.tabBar(this.TabBuilder(TabId.ME))
       }
       .vertical(false)
