@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction';
-import { HomeApi } from '../../api/HomeApi';
+import { UnSplashApi } from '../../api/UnSplashApi';
 import { PopularPhotoInfo } from '../../bean/PopularPhotoInfo';
 import Constants from '../../util/Constants';
 import HttpRequest from '../../util/HttpRequest';
@@ -26,14 +26,14 @@ export struct MyLikesTabContent {
   }
 
   aboutToAppear() {
-    this.sendRankingRequest()
+    this.sendMyLikesRequest()
   }
 
-  sendRankingRequest () {
-    HttpRequest.url = HomeApi.MY_LIKES
+  sendMyLikesRequest () {
+    HttpRequest.url = UnSplashApi.MY_LIKES
     HttpRequest.request({
       onSuccess: (value) => {
-        this.datas = value.itemList
+        this.datas = value
       },
       onFail: (errorCode) => {
         promptAction.showToast({ message: 'errorCode = ' + errorCode});
@@ -42,37 +42,21 @@ export struct MyLikesTabContent {
   }
 
   build() {
-    WaterFlow() {
-      ForEach(this.datas, data => {
-        FlowItem() {
-          this.popularCell(data)
+    List() {
+      ForEach(this.datas, item => {
+        ListItem() {
+          this.itemLayout(item)
         }
-        .width(Constants.MATCH_PARENT)
-        .height(this.getPopularCellHeight())
       })
     }
-    .columnsTemplate("1fr 1fr")
-    .itemConstraintSize({
-      minWidth: 0,
-      maxWidth: '100%',
-      minHeight: 0,
-      maxHeight: '100%'
-    })
-    .columnsGap(5)
-    .rowsGap(5)
-    .padding({left: $r('app.float.vp_20'), right: $r('app.float.vp_20')})
     .width(Constants.MATCH_PARENT)
     .height(Constants.MATCH_PARENT)
-    .layoutDirection(FlexDirection.Column)
-    .onReachStart(() => {
-      console.info("onReachStart")
-    })
-    .onReachEnd(() => {
-      console.info("onReachEnd")
+    .margin({top: $r('app.float.vp_20')})
+    .onScrollIndex((start, end) => {
     })
   }
 
-  @Builder popularCell(data: PopularPhotoInfo) {
+  @Builder itemLayout(data: PopularPhotoInfo) {
     Stack(){
       Image(data.urls.small)
         .width(Constants.MATCH_PARENT)
@@ -88,7 +72,7 @@ export struct MyLikesTabContent {
     }
     .width(Constants.MATCH_PARENT)
     .height($r('app.float.vp_456'))
-    .backgroundColor($r('app.color.white'))
+    .backgroundColor($r('app.color.color_80FFFFFF'))
     .align(Alignment.Bottom)
   }
 }

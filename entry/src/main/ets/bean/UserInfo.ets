@@ -31,6 +31,6 @@ import { UserLinkInfo } from './UserLinkInfo';
    total_photos: number;
    accepted_tos: boolean;
    for_hire: boolean;
-   photos: List<PreviewPhotoInfo>;
+   photos: Array<PreviewPhotoInfo>;
  }
  

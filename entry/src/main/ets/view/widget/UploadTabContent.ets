@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction';
-import { HomeApi } from '../../api/HomeApi';
+import { UnSplashApi } from '../../api/UnSplashApi';
 import { TopicInfo } from '../../bean/TopicInfo';
 import Constants from '../../util/Constants';
 import HttpRequest from '../../util/HttpRequest';
@@ -20,7 +20,7 @@ export struct UploadTabContent {
   @State datas: Array<any> = [];
 
   sendTopicsRequest () {
-    HttpRequest.url = HomeApi.TOPICS
+    HttpRequest.url = UnSplashApi.TOPICS
     HttpRequest.request({
       onSuccess: (value) => {
         this.datas = value
@@ -133,6 +133,7 @@ export struct UploadTabContent {
     .width($r('app.float.vp_128'))
     .height($r('app.float.vp_128'))
     .borderRadius($r('app.float.vp_10'))
+    .backgroundColor($r('app.color.color_80FFFFFF'))
   }
 }
  

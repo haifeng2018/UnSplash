@@ -10,7 +10,7 @@
  */
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import { HomeApi } from '../../api/HomeApi';
+import { UnSplashApi } from '../../api/UnSplashApi';
 import Constants from '../../util/Constants';
 import HttpRequest from '../../util/HttpRequest';
 import RouterPath from '../../util/RouterPath';
@@ -74,7 +74,7 @@ import { TopicInfo } from '../../bean/TopicInfo';
     })
       .width(Constants.MATCH_PARENT)
       .height(Constants.MATCH_PARENT)
-      .backgroundColor($r('app.color.color_F9F9F9'))
+      .backgroundColor($r('app.color.color_333333'))
   }
 
   @Builder itemLayout (info: TopicPhotoInfo,index) {
@@ -97,7 +97,7 @@ import { TopicInfo } from '../../bean/TopicInfo';
       }
       .width(Constants.MATCH_PARENT)
       .height($r('app.float.vp_456'))
-      .backgroundColor($r('app.color.white'))
+      .backgroundColor($r('app.color.color_4DEEEEEE'))
       .align(Alignment.Bottom)
     }
   }
@@ -137,10 +137,11 @@ import { TopicInfo } from '../../bean/TopicInfo';
     .alignContent(Alignment.Bottom)
     .width(Constants.MATCH_PARENT)
     .height($r('app.float.vp_456'))
+    .backgroundColor($r('app.color.color_4DEEEEEE'))
   }
 
   getRequestUrl (): string {
-    let url = `${HomeApi.BASE_URL}topics/${this.topicInfo.slug}/photos?page=${this.currentPage}&per_page=10&${HomeApi.AUTH}`
+    let url = `${UnSplashApi.BASE_URL}topics/${this.topicInfo.slug}/photos?page=${this.currentPage}&per_page=10&${UnSplashApi.AUTH}`
     return url
   }
 }

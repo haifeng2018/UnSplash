@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction';
-import { HomeApi } from '../../api/HomeApi';
+import { UnSplashApi } from '../../api/UnSplashApi';
 import { PopularPhotoInfo } from '../../bean/PopularPhotoInfo';
 import Constants from '../../util/Constants';
 import HttpRequest from '../../util/HttpRequest';
@@ -27,14 +27,14 @@ export struct MyPhotosTabContent {
   }
 
   aboutToAppear() {
-    this.sendRankingRequest()
+    this.sendMyPhotosRequest()
   }
 
-  sendRankingRequest () {
-    HttpRequest.url = HomeApi.MY_PHOTOS
+  sendMyPhotosRequest () {
+    HttpRequest.url = UnSplashApi.MY_PHOTOS
     HttpRequest.request({
       onSuccess: (value) => {
-        this.datas = value.itemList
+        this.datas = value
       },
       onFail: (errorCode) => {
         promptAction.showToast({ message: 'errorCode = ' + errorCode});
@@ -50,6 +50,7 @@ export struct MyPhotosTabContent {
         }
         .width(Constants.MATCH_PARENT)
         .height(this.getPopularCellHeight())
+        .backgroundColor($r('app.color.color_80FFFFFF'))
       })
     }
     .columnsTemplate("1fr 1fr")
@@ -61,10 +62,10 @@ export struct MyPhotosTabContent {
     })
     .columnsGap(5)
     .rowsGap(5)
-    .padding({left: $r('app.float.vp_20'), right: $r('app.float.vp_20')})
     .width(Constants.MATCH_PARENT)
     .height(Constants.MATCH_PARENT)
     .layoutDirection(FlexDirection.Column)
+    .margin({top: $r('app.float.vp_20')})
     .onReachStart(() => {
       console.info("onReachStart")
     })
@@ -74,24 +75,9 @@ export struct MyPhotosTabContent {
   }
 
   @Builder popularCell(data: PopularPhotoInfo) {
-    Stack(){
-      Image(data.urls.small)
-        .width(Constants.MATCH_PARENT)
-        .height(Constants.MATCH_PARENT)
-
-      Text(data.user.name)
-        .width(Constants.MATCH_PARENT)
-        .fontColor($r('app.color.white'))
-        .fontSize($r('app.float.fp_18'))
-        .maxLines(1)
-        .textOverflow({overflow: TextOverflow.Ellipsis})
-        .margin({left:$r('app.float.vp_20'),bottom:$r('app.float.vp_20')})
-    }
-    .width(Constants.MATCH_PARENT)
-    .align(Alignment.Bottom)
-    .onClick(() => {
-      promptAction.showToast({ message: 'data.user.name = ' + data.user.name});
-    })
+    Image(data.urls.small)
+      .width(Constants.MATCH_PARENT)
+      .height(Constants.MATCH_PARENT)
   }
 }
  

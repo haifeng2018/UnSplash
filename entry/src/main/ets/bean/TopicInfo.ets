@@ -8,7 +8,6 @@
  * Description: 
  * -----------------------------------------------------------------
  */
-import List from '@ohos.util.List';
 import { CoverPhotoInfo } from './CoverPhotoInfo';
 import { PreviewPhotoInfo } from './PreviewPhotoInfo';
  export class TopicInfo {
@@ -21,6 +20,7 @@ import { PreviewPhotoInfo } from './PreviewPhotoInfo';
    starts_at: string;
    ends_at: string;
    status: string;
+   total_photos: number;
    cover_photo:CoverPhotoInfo;
-   preview_photos: List<PreviewPhotoInfo>;
+   preview_photos: Array<PreviewPhotoInfo>;
  }

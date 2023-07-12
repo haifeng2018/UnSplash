@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.cer",
-          "storePassword": "0000001A84307145B8C5C17A429EE4F9CB7E1D41F47CB181E2DE210A75F017A032ECC0169B2CE086B370",
+          "storePassword": "0000001ABED0CAC2C977628BAF2D63BE7894C323DF29F3A466DCFBAC1904469A13F9146C07A60BE0F7E2",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A0E1C460785227E561F36EAEF45DDB8E97E40DBF4CB27636825F64FCB4D46193DA388854E3A13",
+          "keyPassword": "0000001A50D1DA3872517E9342900447B4829DE944003B39A705EA38F64C766B25F6D883E132DEB306AA",
           "profile": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.p12"

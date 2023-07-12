@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction'
-import { HomeApi } from '../../api/HomeApi'
+import { UnSplashApi } from '../../api/UnSplashApi'
 import { PopularPhotoInfo } from '../../bean/PopularPhotoInfo'
 import { SearchCategoryInfo } from '../../bean/SearchCategoryInfo'
 import { searchCategorys, searchHints } from '../../model/SearchPageModel'
@@ -30,7 +30,7 @@ export struct SearchTabContent {
   }
 
   sendPopularPhotosRequest () {
-    HttpRequest.url = HomeApi.POPULAR_PHOTOS
+    HttpRequest.url = UnSplashApi.POPULAR_PHOTOS
     HttpRequest.request({
       onSuccess: (value) => {
         this.datas = value
@@ -85,6 +85,8 @@ export struct SearchTabContent {
         .margin({left:$r('app.float.vp_20'),bottom:$r('app.float.vp_20')})
     }
     .width(Constants.MATCH_PARENT)
+    .height(Constants.MATCH_PARENT)
+    .backgroundColor($r('app.color.color_80FFFFFF'))
     .align(Alignment.Bottom)
     .onClick(() => {
       promptAction.showToast({ message: 'data.user.name = ' + data.user.name});
@@ -173,6 +175,7 @@ export struct SearchTabContent {
     .width($r('app.float.vp_128'))
     .height($r('app.float.vp_128'))
     .borderRadius($r('app.float.vp_10'))
+    .backgroundColor($r('app.color.color_80FFFFFF'))
   }
 
   @Builder titleBar() {

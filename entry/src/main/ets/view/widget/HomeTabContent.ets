@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction';
-import { HomeApi } from '../../api/HomeApi';
+import { UnSplashApi } from '../../api/UnSplashApi';
 import { TopicInfo } from '../../bean/TopicInfo';
 import Constants from '../../util/Constants'
 import HttpRequest from '../../util/HttpRequest';
@@ -30,7 +30,7 @@ export struct HomeTabContent {
   }
 
   sendTopicsRequest () {
-    HttpRequest.url = HomeApi.TOPICS
+    HttpRequest.url = UnSplashApi.TOPICS
     HttpRequest.request({
       onSuccess: (value) => {
         this.datas = value

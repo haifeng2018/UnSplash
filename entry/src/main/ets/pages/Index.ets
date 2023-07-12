@@ -36,7 +36,7 @@ struct Index {
         this.currentIndex = index
       })
       .width(Constants.MATCH_PARENT)
-      .backgroundColor($r('app.color.white'))
+      .backgroundColor($r('app.color.black'))
     }
     .width(Constants.MATCH_PARENT)
     .height(Constants.MATCH_PARENT)

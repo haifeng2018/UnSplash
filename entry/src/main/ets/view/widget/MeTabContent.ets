@@ -9,7 +9,7 @@
  * -----------------------------------------------------------------
  */
 import promptAction from '@ohos.promptAction'
-import { HomeApi } from '../../api/HomeApi'
+import { UnSplashApi } from '../../api/UnSplashApi'
 import { UserInfo } from '../../bean/UserInfo'
 import { photos_tabs } from '../../model/MePageModel'
 import Constants from '../../util/Constants'
@@ -20,14 +20,10 @@ import { MyPhotosTabContent } from './MyPhotosTabContent'
 @Component
 @Preview
 export struct MeTabContent {
-
   private scroller: Scroller = new Scroller()
 
   // 滑动的y偏移量
   private yTotalOffset = 0
-  // 标题栏透明度
-  @State titleBarOpacity: number = 1
-  @State listScrollTop: boolean = true
 
   @State currentIndex: number = 0
   @State mUserInfo: UserInfo = null
@@ -37,7 +33,7 @@ export struct MeTabContent {
   }
 
   sendUserInfoRequest () {
-    HttpRequest.url = HomeApi.USER_INFO
+    HttpRequest.url = UnSplashApi.USER_INFO
     HttpRequest.request({
       onSuccess: (value) => {
         this.mUserInfo = value
@@ -49,45 +45,18 @@ export struct MeTabContent {
   }
 
   build() {
-    Scroll(this.scroller) {
-      Column() {
-        this.titleBar()
-        this.content()
-      }
-      .width(Constants.MATCH_PARENT)
-      .backgroundColor($r('app.color.color_333333'))
+    Column() {
+      this.titleBar()
+      this.content()
     }
-    .scrollable(ScrollDirection.Vertical)  // 滚动方向纵向
-    .scrollBar(BarState.Off)  // 滚动条常驻显示
-    .scrollBarColor(Color.Gray)  // 滚动条颜色
-    .scrollBarWidth(30) // 滚动条宽度
-    .edgeEffect(EdgeEffect.None)
-    .onScroll((xOffset: number, yOffset: number) => {
-      console.error('onScroll-xOffset =' + xOffset)
-      console.error('onScroll-yOffset =' + yOffset)
-      this.yTotalOffset += yOffset
-      const yTotalOffsetVP = px2vp(this.yTotalOffset)
-      // 轮播图高度 350
-      const scale = yTotalOffsetVP / 100
-      this.titleBarOpacity = scale
-      if (scale < 0) {
-        this.titleBarOpacity = 0
-        this.listScrollTop = true
-      }
-      if (scale > 1) {
-        this.titleBarOpacity = 1
-        this.listScrollTop = false
-      }
-    })
-    .onScrollEdge((side: Edge) => {
-      console.info('To the edge')
-    })
+    .width(Constants.MATCH_PARENT)
+    .backgroundColor($r('app.color.color_333333'))
   }
 
   @Builder content () {
     if(this.mUserInfo != null) {
       Column() {
-        Image($r(this.mUserInfo.profile_image.small))
+        Image(this.mUserInfo.profile_image.small)
           .width($r('app.float.vp_80'))
           .height($r('app.float.vp_80'))
           .objectFit(ImageFit.Cover)
