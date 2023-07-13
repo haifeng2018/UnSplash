@@ -44,15 +44,16 @@ export struct MyCollectionsTabContent {
       })
     }
     .width(Constants.MATCH_PARENT)
-    .height(Constants.MATCH_PARENT)
-    .margin({top: $r('app.float.vp_20')})
+    .margin({top: $r('app.float.vp_10')})
     .onScrollIndex((start, end) => {
+    })
+    .onScrollFrameBegin((offset: number) => {
+      return { offsetRemain: 0 }
     })
   }
 
   @Builder itemLayout(info: TopicInfo) {
     Column() {
-
       List({ space: 2 }) {
         ForEach(info.preview_photos, (data) => {
           ListItem() {
@@ -78,9 +79,10 @@ export struct MyCollectionsTabContent {
 
     }
     .width(Constants.MATCH_PARENT)
-    .padding({top: $r('app.float.vp_10'),bottom: $r('app.float.vp_10')})
+    .padding({bottom: $r('app.float.vp_10')})
     .backgroundColor($r('app.color.color_4DEEEEEE'))
     .borderRadius($r('app.float.vp_10'))
+    .clip(true)
   }
 
   @Builder cellLayout(data: PreviewPhotoInfo) {

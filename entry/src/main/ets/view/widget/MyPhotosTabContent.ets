@@ -43,41 +43,28 @@ export struct MyPhotosTabContent {
   }
 
   build() {
-    WaterFlow() {
-      ForEach(this.datas, data => {
-        FlowItem() {
-          this.popularCell(data)
+    List({space: 10}) {
+      ForEach(this.datas, item => {
+        ListItem() {
+          this.itemLayout(item)
         }
-        .width(Constants.MATCH_PARENT)
-        .height(this.getPopularCellHeight())
         .backgroundColor($r('app.color.color_80FFFFFF'))
       })
     }
-    .columnsTemplate("1fr 1fr")
-    .itemConstraintSize({
-      minWidth: 0,
-      maxWidth: '100%',
-      minHeight: 0,
-      maxHeight: '100%'
-    })
-    .columnsGap(5)
-    .rowsGap(5)
     .width(Constants.MATCH_PARENT)
-    .height(Constants.MATCH_PARENT)
-    .layoutDirection(FlexDirection.Column)
-    .margin({top: $r('app.float.vp_20')})
-    .onReachStart(() => {
-      console.info("onReachStart")
+    .margin({top: $r('app.float.vp_10')})
+    .lanes(2)
+    .onScrollIndex((start, end) => {
     })
-    .onReachEnd(() => {
-      console.info("onReachEnd")
+    .onScrollFrameBegin((offset: number) => {
+      return { offsetRemain: 0 }
     })
   }
 
-  @Builder popularCell(data: PopularPhotoInfo) {
+  @Builder itemLayout(data: PopularPhotoInfo) {
     Image(data.urls.small)
       .width(Constants.MATCH_PARENT)
-      .height(Constants.MATCH_PARENT)
+      .height($r('app.float.vp_256'))
   }
 }
  

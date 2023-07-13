@@ -18,13 +18,6 @@ import HttpRequest from '../../util/HttpRequest';
 export struct MyLikesTabContent {
   @State datas: Array<any> = [];
 
-  getPopularCellHeight(): number {
-    let minHeight = 128
-    let maxHeight = 298
-    let ret = Math.floor(Math.random() * maxHeight)
-    return (ret > minHeight ? ret : minHeight)
-  }
-
   aboutToAppear() {
     this.sendMyLikesRequest()
   }
@@ -50,9 +43,11 @@ export struct MyLikesTabContent {
       })
     }
     .width(Constants.MATCH_PARENT)
-    .height(Constants.MATCH_PARENT)
-    .margin({top: $r('app.float.vp_20')})
+    .margin({top: $r('app.float.vp_10')})
     .onScrollIndex((start, end) => {
+    })
+    .onScrollFrameBegin((offset: number) => {
+      return { offsetRemain: 0 }
     })
   }
 
@@ -71,7 +66,7 @@ export struct MyLikesTabContent {
         .margin({left:$r('app.float.vp_20'),bottom:$r('app.float.vp_20')})
     }
     .width(Constants.MATCH_PARENT)
-    .height($r('app.float.vp_456'))
+    .aspectRatio(data.width / data.height)
     .backgroundColor($r('app.color.color_80FFFFFF'))
     .align(Alignment.Bottom)
   }

@@ -10,23 +10,15 @@
  */
 import promptAction from '@ohos.promptAction'
 import { UnSplashApi } from '../../api/UnSplashApi'
-import { UserInfo } from '../../bean/UserInfo'
-import { photos_tabs } from '../../model/MePageModel'
 import Constants from '../../util/Constants'
 import HttpRequest from '../../util/HttpRequest'
-import { MyCollectionsTabContent } from './MyCollectionsTabContent'
-import { MyLikesTabContent } from './MyLikesTabContent'
-import { MyPhotosTabContent } from './MyPhotosTabContent'
+import { MeContent } from './MeContent'
+
 @Component
 @Preview
 export struct MeTabContent {
-  private scroller: Scroller = new Scroller()
-
-  // 滑动的y偏移量
-  private yTotalOffset = 0
-
-  @State currentIndex: number = 0
-  @State mUserInfo: UserInfo = null
+  @State name: string = ''
+  @State avatar: string = ''
 
   aboutToAppear() {
     this.sendUserInfoRequest()
@@ -36,7 +28,8 @@ export struct MeTabContent {
     HttpRequest.url = UnSplashApi.USER_INFO
     HttpRequest.request({
       onSuccess: (value) => {
-        this.mUserInfo = value
+        this.name = value.name
+        this.avatar = value.profile_image.small
       },
       onFail: (errorCode) => {
         promptAction.showToast({ message: 'errorCode = ' + errorCode});
@@ -50,17 +43,19 @@ export struct MeTabContent {
       this.content()
     }
     .width(Constants.MATCH_PARENT)
+    .height(Constants.MATCH_PARENT)
     .backgroundColor($r('app.color.color_333333'))
+    .justifyContent(FlexAlign.Start)
   }
 
   @Builder content () {
-    if(this.mUserInfo != null) {
+    Scroll() {
       Column() {
-        Image(this.mUserInfo.profile_image.small)
+        Image(this.avatar)
           .width($r('app.float.vp_80'))
           .height($r('app.float.vp_80'))
           .objectFit(ImageFit.Cover)
-          .margin({'top':$r('app.float.vp_60')})
+          .margin({'top':$r('app.float.vp_110')})
           .clip(new Circle({ width: '80vp', height: '80vp' }))
           .border({
             width: $r('app.float.vp_2'),
@@ -69,91 +64,48 @@ export struct MeTabContent {
             style:BorderStyle.Solid
           })
 
-        Text(this.mUserInfo.name)
+        Text(this.name)
           .width(Constants.MATCH_PARENT)
           .fontColor($r('app.color.white'))
           .fontSize($r('app.float.fp_20'))
           .textAlign(TextAlign.Center)
           .margin({'top':$r('app.float.vp_20')})
 
-        Stack() {
-          Divider().vertical(false)
-            .width(Constants.MATCH_PARENT)
-            .height($r('app.float.vp_40'))
-            .backgroundColor($r('app.color.color_4DEEEEEE'))
-            .borderRadius($r('app.float.vp_8'))
-
-          Tabs() {
-            TabContent() {
-              MyPhotosTabContent()
-            }.tabBar(this.TabBuilder(0))
-
-            TabContent() {
-              MyLikesTabContent()
-            }.tabBar(this.TabBuilder(1))
-
-            TabContent() {
-              MyCollectionsTabContent()
-            }.tabBar(this.TabBuilder(2))
-          }
-          .vertical(false)
-          .barWidth(Constants.MATCH_PARENT)
-          .barHeight($r('app.float.vp_40'))
-          .barMode(BarMode.Fixed)
-          .onChange((index: number) => {
-            this.currentIndex = index
-          })
-          .width(Constants.MATCH_PARENT)
-        }
-        .alignContent(Alignment.Top)
-        .margin({top: $r('app.float.vp_30'),left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
+        MeContent()
       }
-      .width(Constants.MATCH_PARENT)
-      .height(Constants.MATCH_PARENT)
+      .justifyContent(FlexAlign.Start)
     }
-  }
-
-  @Builder TabBuilder(index: number) {
-    Text(photos_tabs[index])
-      .width(Constants.MATCH_PARENT)
-      .height(Constants.MATCH_PARENT)
-      .backgroundColor(this.currentIndex === index ? $r('app.color.color_4DEEEEEE') : $r('app.color.transparent'))
-      .borderRadius($r('app.float.vp_8'))
-      .padding($r('app.float.vp_12'))
-      .textAlign(TextAlign.Center)
-      .fontSize(this.currentIndex === index ? $r('app.float.fp_18') : $r('app.float.fp_16'))
-      .fontColor($r('app.color.white'))
+    .width(Constants.MATCH_PARENT)
+    .height(Constants.MATCH_PARENT)
   }
 
   @Builder titleBar () {
-    if(this.mUserInfo != null) {
-      Row() {
-        Image($r('app.media.ic_trending_up'))
-          .width($r('app.float.vp_40'))
-          .height($r('app.float.vp_40'))
+    Row() {
+      Image($r('app.media.ic_trending_up'))
+        .width($r('app.float.vp_30'))
+        .height($r('app.float.vp_30'))
 
-        Text(this.mUserInfo.name)
-          .layoutWeight(1)
-          .fontSize($r('app.float.fp_24'))
-          .fontColor($r('app.color.white'))
-          .fontWeight(700)
-          .textAlign(TextAlign.Center)
-          .margin({left: $r('app.float.vp_50'),right: $r('app.float.vp_10')})
+      Text(this.name)
+        .layoutWeight(1)
+        .fontSize($r('app.float.fp_24'))
+        .fontColor($r('app.color.white'))
+        .fontWeight(FontWeight.Bold)
+        .textAlign(TextAlign.Center)
+        .margin({left: $r('app.float.vp_40'),right: $r('app.float.vp_10')})
 
-        Image($r('app.media.ic_more'))
-          .width($r('app.float.vp_40'))
-          .height($r('app.float.vp_40'))
-          .margin({right: $r('app.float.vp_10')})
+      Image($r('app.media.ic_more'))
+        .width($r('app.float.vp_30'))
+        .height($r('app.float.vp_30'))
+        .margin({right: $r('app.float.vp_10')})
 
-        Image($r('app.media.ic_share'))
-          .width($r('app.float.vp_40'))
-          .height($r('app.float.vp_40'))
-      }
-      .width(Constants.MATCH_PARENT)
-      .height($r('app.float.vp_56'))
-      .backgroundColor($r('app.color.color_99000000'))
-      .padding({left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
+      Image($r('app.media.ic_share'))
+        .width($r('app.float.vp_30'))
+        .height($r('app.float.vp_30'))
     }
+    .width(Constants.MATCH_PARENT)
+    .height($r('app.float.vp_56'))
+    .backgroundColor($r('app.color.color_99000000'))
+    .padding({left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
   }
 }
  

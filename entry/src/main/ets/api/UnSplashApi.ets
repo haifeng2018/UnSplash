@@ -14,6 +14,7 @@ export class UnSplashApi {
   static readonly AUTH = 'client_id=xc-uXz4GlgUeFsZPgWZICrGo_dfeQs4QvJmrzDMIkfo'
 
   static readonly TOPICS = `${UnSplashApi.BASE_URL}topics?${UnSplashApi.AUTH}&page=1&per_page=10`
+  static readonly LIKE_PHOTO = `${UnSplashApi.BASE_URL}photos/:id/like?${UnSplashApi.AUTH}`
   static readonly POPULAR_PHOTOS = `${UnSplashApi.BASE_URL}photos?order_by=popular&${UnSplashApi.AUTH}&page=1&per_page=10`
 
   static readonly USER_INFO = `${UnSplashApi.BASE_URL}users/victor423099?${UnSplashApi.AUTH}`

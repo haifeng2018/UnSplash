@@ -10,6 +10,16 @@
  */
 
 export default class Constants {
+  static readonly DATA = 'data';
+  static readonly TITLE = 'title';
+  static readonly POSITION = 'position';
+  static readonly URL = 'url';
+  static readonly SHARE_ID = 'shareId';
+  static readonly TOPIC_ID = 'topicId';
+  static readonly USER_ID = 'userId';
+
   static readonly MATCH_PARENT: string = '100%';
   static readonly SWIPER_DATA_TAG: string = 'SWIPER_DATA_TAG';
+  static readonly TRANSITION_ANIMATION_DURATION: number = 500;
+  static readonly SHARE_ITEM_ANIMATION_DELAY = 100;
 }

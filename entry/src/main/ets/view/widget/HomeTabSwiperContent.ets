@@ -8,17 +8,17 @@
  * Description: 
  * -----------------------------------------------------------------
  */
-import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
 import { UnSplashApi } from '../../api/UnSplashApi';
 import Constants from '../../util/Constants';
 import HttpRequest from '../../util/HttpRequest';
-import RouterPath from '../../util/RouterPath';
 import { PageState } from './refresh/PageState';
 import { RefreshConfig } from './refresh/RefreshConfig';
 import LMList from './refresh/LMList';
 import { TopicPhotoInfo } from '../../bean/TopicPhotoInfo';
 import { TopicInfo } from '../../bean/TopicInfo';
+import router from '@ohos.router';
+import RouterPath from '../../util/RouterPath';
 
 @Preview
 @Component
@@ -29,6 +29,7 @@ import { TopicInfo } from '../../bean/TopicInfo';
   private topicInfo:TopicInfo;
 
   @State currentPage: number = 1
+  @State deviceInfo: string = ''
 
   sendTopicPhotosRequest () {
     HttpRequest.url = this.getRequestUrl()
@@ -96,10 +97,25 @@ import { TopicInfo } from '../../bean/TopicInfo';
           .margin({left:$r('app.float.vp_20'),bottom:$r('app.float.vp_20')})
       }
       .width(Constants.MATCH_PARENT)
-      .height($r('app.float.vp_456'))
+      .aspectRatio(info.width / info.height)
       .backgroundColor($r('app.color.color_4DEEEEEE'))
       .align(Alignment.Bottom)
     }
+    .sharedTransition(`${this.datas.indexOf(info)}${info.id}`, {
+      duration: Constants.TRANSITION_ANIMATION_DURATION,
+      curve: Curve.Smooth,
+      delay: Constants.SHARE_ITEM_ANIMATION_DELAY
+    })
+    .onClick(() => {
+      router.pushUrl({
+        url: RouterPath.PHOTO_DETAIL_PAGE,
+        params: {
+          data: this.datas,
+          position: index,
+          shareId: `${this.datas.indexOf(info)}${info.id}`
+        }
+      })
+    })
   }
 
   @Builder headerLayout (info: TopicInfo) {

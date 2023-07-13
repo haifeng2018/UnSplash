@@ -2,6 +2,7 @@ import { NavList, TabId } from '../model/HomeTabModel'
 import Constants from '../util/Constants'
 import { HomeTabContent } from '../view/widget/HomeTabContent'
 import { MeTabContent } from '../view/widget/MeTabContent'
+import { NestedScrollTab } from '../view/widget/NestedScrollTab'
 import { SearchTabContent } from '../view/widget/SearchTabContent'
 import { UploadTabContent } from '../view/widget/UploadTabContent'
 @Entry

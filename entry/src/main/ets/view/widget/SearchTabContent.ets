@@ -22,13 +22,6 @@ export struct SearchTabContent {
 
   @State datas: Array<any> = [];
 
-  getPopularCellHeight(): number {
-    let minHeight = 128
-    let maxHeight = 298
-    let ret = Math.floor(Math.random() * maxHeight)
-    return (ret > minHeight ? ret : minHeight)
-  }
-
   sendPopularPhotosRequest () {
     HttpRequest.url = UnSplashApi.POPULAR_PHOTOS
     HttpRequest.request({
@@ -100,7 +93,7 @@ export struct SearchTabContent {
           this.popularCell(data)
         }
         .width(Constants.MATCH_PARENT)
-        .height(this.getPopularCellHeight())
+        .aspectRatio(data.width / data.height)
       })
     }
     .columnsTemplate("1fr 1fr")

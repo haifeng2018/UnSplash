@@ -109,7 +109,7 @@ export struct HomeTabContent {
         .layoutWeight(1)
         .fontSize($r('app.float.fp_24'))
         .fontColor($r('app.color.white'))
-        .fontWeight(700)
+        .fontWeight(FontWeight.Bold)
         .textAlign(TextAlign.Center)
         .margin({right: $r('app.float.vp_60')})
     }
@@ -124,7 +124,7 @@ export struct HomeTabContent {
         .height(Constants.MATCH_PARENT)
         .padding({left:$r('app.float.vp_20'),right:$r('app.float.vp_20')})
         .fontSize(this.currentIndex === index ? $r('app.float.fp_22') : $r('app.float.fp_20'))
-        .fontWeight(this.currentIndex === index ? 700 : 500)
+        .fontWeight(this.currentIndex === index ? FontWeight.Bold : FontWeight.Normal)
         .fontColor(this.currentIndex === index ? $r('app.color.white') : $r('app.color.color_80FFFFFF'))
 
       Divider()

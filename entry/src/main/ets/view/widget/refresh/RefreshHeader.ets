@@ -13,9 +13,10 @@ export default struct RefreshHeader {
       LoadingProgress()
         .width($r('app.float.vp_50'))
         .height($r('app.float.vp_50'))
+        .color($r('app.color.white'))
 
       Text(this.refreshLayoutClass.textValue)
-        .fontColor($r('app.color.color_666666'))
+        .fontColor($r('app.color.white'))
         .fontSize($r('app.float.fp_18'))
     }
     .width(Constants.MATCH_PARENT)
