@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.cer",
-          "storePassword": "0000001ABED0CAC2C977628BAF2D63BE7894C323DF29F3A466DCFBAC1904469A13F9146C07A60BE0F7E2",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001A50D1DA3872517E9342900447B4829DE944003B39A705EA38F64C766B25F6D883E132DEB306AA",
-          "profile": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.p7b",
+          "storePassword": "00000018AF878995530314FF02FE31FC07469071013B01BCB278E36C8607C504821E0773CF013A40",
+          "certpath": "D:/victor/github/UnSplash/docs/unsplash_debug.cer",
+          "keyAlias": "UnSplash",
+          "keyPassword": "0000001859C98839646D848A677C05401C2F4E4C897EC3E5F0386CC617767F4D4F32689AFD04ECC8",
+          "profile": "D:/victor/github/UnSplash/docs/unspalshDebug.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\BS-WX\\.ohos\\config\\auto_debug_UnSplash_org.cherry.unsplash_2850086000432686851.p12"
+          "storeFile": "D:/victor/github/UnSplash/docs/unsplash_debug.p12"
         }
       }
     ],

@@ -5,6 +5,9 @@ import { TopicPhotoInfo } from '../bean/TopicPhotoInfo';
 import Constants from '../util/Constants';
 import HttpRequest from '../util/HttpRequest';
 import http from '@ohos.net.http';
+import request from '@ohos.request';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+
 @Entry
 @Component
 struct PhotoDetailPage {
@@ -123,6 +126,9 @@ struct PhotoDetailPage {
           .backgroundColor($r('app.color.color_4D000000'))
           .clip(new Circle({ width: 50, height: 50 }))
           .padding($r('app.float.vp_6'))
+          .onClick(() => {
+            this.requestPermission(data)
+          })
       }
       .width(Constants.MATCH_PARENT)
     }
@@ -159,5 +165,35 @@ struct PhotoDetailPage {
     .height($r('app.float.vp_56'))
     .backgroundColor($r('app.color.color_99000000'))
     .padding({left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
+  }
+
+  requestPermission (info: TopicPhotoInfo) {
+    let atManager = abilityAccessCtrl.createAtManager();
+    try {
+      atManager.requestPermissionsFromUser(getContext(this), ["ohos.permission.WRITE_IMAGEVIDEO"], (err, data)=>{
+          console.info("data:" + JSON.stringify(data));
+          console.info("data permissions:" + data.permissions);
+          console.info("data authResults:" + data.authResults);
+        this.downloadImage(info.urls.small)
+      });
+    } catch(err) {
+      console.log(`catch err->${JSON.stringify(err)}`);
+    }
+  }
+
+  downloadImage (imgUrl: string) {
+    let downloadTask;
+    try {
+      request.downloadFile(globalThis.abilityContext, { url: imgUrl,
+        filePath: '/sdcard/imgUrl.png'}, (err, data) => {
+        if (err) {
+          console.error('Failed to request the download. Cause: ' + JSON.stringify(err));
+          return;
+        }
+        downloadTask = data;
+      });
+    } catch (err) {
+      console.error('err.code : ' + err.code + ', err.message : ' + err.message);
+    }
   }
 }
