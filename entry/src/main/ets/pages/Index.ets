@@ -54,5 +54,6 @@ struct Index {
         .scale({x:this.currentIndex === index ? 1.1 : 1.0,
           y:this.currentIndex === index ? 1.1 : 1.0})
     }.justifyContent(FlexAlign.Center)
+    .margin({top: $r('app.float.status_bar_height')})
   }
 }

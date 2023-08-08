@@ -22,4 +22,6 @@ export default class Constants {
   static readonly SWIPER_DATA_TAG: string = 'SWIPER_DATA_TAG';
   static readonly TRANSITION_ANIMATION_DURATION: number = 500;
   static readonly SHARE_ITEM_ANIMATION_DELAY = 100;
+
+  static readonly TRANSPARENT_COLOR: string = '#00ffffff';
 }

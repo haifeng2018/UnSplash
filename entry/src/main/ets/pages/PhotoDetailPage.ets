@@ -164,7 +164,7 @@ struct PhotoDetailPage {
     .width(Constants.MATCH_PARENT)
     .height($r('app.float.vp_56'))
     .backgroundColor($r('app.color.color_99000000'))
-    .padding({left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
+    .padding({top:$r('app.float.status_bar_height'),left: $r('app.float.vp_20'),right: $r('app.float.vp_20')})
   }
 
   requestPermission (info: TopicPhotoInfo) {
